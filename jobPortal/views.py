@@ -10,8 +10,8 @@ from .skill_controller import *
 jobs_controller = JobController()
 skill_controller = SkillController()
 
-class JobAPIView(viewsets.ModelViewSet):
 
+class JobAPIView(viewsets.ModelViewSet):
     serializer_class = JobSerializer
 
     def get(self, request):
@@ -25,9 +25,9 @@ class JobAPIView(viewsets.ModelViewSet):
 
     def destroy(self, request):
         return jobs_controller.delete_job(request)
-    
-class SkillAPIView(viewsets.ModelViewSet):
 
+
+class SkillAPIView(viewsets.ModelViewSet):
     serializer_class = SkillSerializer
 
     def get(self, request):

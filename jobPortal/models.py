@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 # Create your models here
 
 class Job(models.Model):
@@ -10,15 +11,16 @@ class Job(models.Model):
     date_posted = models.DateTimeField(default=timezone.now())
     due_date = models.DateField(auto_now=True)
     job_requirements = models.TextField()
-    pay = models.FloatField()
+    pay = models.CharField()
     job_location = models.CharField(max_length=50)
     company_name = models.CharField(max_length=50)
-    skill_requirements = models.ManyToManyField("Skill_Requirement", null=True , blank = True )
+    skill_requirements = models.ManyToManyField("Skill_Requirement", null=True, blank=True)
     job_mode = models.CharField(max_length=20)
 
 
 class Skill(models.Model):
     name = models.CharField(max_length=50)
+
 
 class Skill_Requirement(models.Model):
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
