@@ -21,12 +21,10 @@ class JobSerializer(serializers.ModelSerializer):
         model = Job
         fields = "__all__"
 
-    # def create(self, validated_data):
-    #     skill_requirements_data = validated_data.pop('skill_requirements')
-    #     job = Job.objects.create(**validated_data)
-    #
-    #     for skill_requirement_data in skill_requirements_data:
-    #         skill = Skill.objects.get(id=skill_requirement_data['skill'])
-    #         Skill_Requirement.objects.create(skill=skill, scale=skill_requirement_data['scale'])
-    #
-    #     return job
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['pay'] = f"PKR {representation['pay']}"
+        return representation
+
+
+
